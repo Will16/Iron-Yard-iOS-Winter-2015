@@ -92,7 +92,7 @@
         
                           @"text": @"item3",
                           @"color": [UIColor purpleColor],
-                          @"done":@YES
+                          @"done":@NO
                           },
                       
                       // 10 others
