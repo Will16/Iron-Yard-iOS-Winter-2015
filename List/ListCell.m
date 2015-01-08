@@ -28,6 +28,8 @@
    
 }
 
+
+
 -(instancetype)  initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -45,9 +47,12 @@
         // 10 (20/2)
         colorView.layer.cornerRadius = 10;
         
+        
+        
         strikeThrough = [[UIView alloc] initWithFrame:CGRectMake(10, 20, self.frame.size.width, 1)];
         
         strikeThrough.backgroundColor = [UIColor whiteColor];
+        
         
         [self.contentView addSubview: strikeThrough];
         [self.contentView addSubview: colorView];
@@ -77,6 +82,14 @@
             
             else {
              colorView.backgroundColor = [UIColor clearColor];
+             
+                colorView.layer.borderColor = (__bridge CGColorRef)([UIColor whiteColor]);
+         
+                colorView.layer.borderWidth = 4;
+                
+            
+                
+                
             }
         }
         
@@ -98,6 +111,7 @@
     
     
 }
+
 
 -(void)buttonPressed {
     
