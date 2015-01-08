@@ -78,14 +78,17 @@
             
             if (colorView.backgroundColor  == [UIColor clearColor]) {
                 colorView.backgroundColor = _itemInfo[@"color"];
+                
+                colorView.layer.borderWidth = 0;
             }
             
             else {
              colorView.backgroundColor = [UIColor clearColor];
              
-                colorView.layer.borderColor = (__bridge CGColorRef)([UIColor whiteColor]);
+                colorView.layer.borderColor = [UIColor whiteColor].CGColor;
          
-                colorView.layer.borderWidth = 4;
+                
+                colorView.layer.borderWidth = 1;
                 
             
                 

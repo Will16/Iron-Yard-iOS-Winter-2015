@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  NewFriendVC.h
 //  GithubFriends
 //
 //  Created by William McDuff on 2015-01-08.
@@ -8,12 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface NewFriendVC : UIViewController
 
 
-// window: A singleton
-@property (strong, nonatomic) UIWindow *window;
-
+@property (nonatomic) NSMutableArray *friends;
 
 @end
-

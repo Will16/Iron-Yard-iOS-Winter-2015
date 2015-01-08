@@ -15,16 +15,28 @@
 @implementation AppDelegate
 
 
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    
+  // window: a singleton
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-                   
+    
+    // the NC is now the main window
+    
+    UINavigationController *nC = [[UINavigationController alloc] init];
+    
+    
+   
+    
     FriendsTVC * rootTVC = [[FriendsTVC alloc] init];
-                   
-    self.window.rootViewController = rootTVC;
-                   
+    
+    
+    // the NC is now the main window and the rootVC is one of the vc of the NC
+   
+    self.window.rootViewController = nC;
+      nC.viewControllers = @[rootTVC];
+    
     [self.window makeKeyAndVisible];
     
     return YES;

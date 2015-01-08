@@ -8,6 +8,9 @@
 
 #import "FriendsTVC.h"
 #import "FriendCell.h"
+#import "NewFriendVC.h"
+#import "FriendDetailVC.h"
+#import "AppDelegate.h"
 
 @interface FriendsTVC ()
 
@@ -31,6 +34,9 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    
+    
+    
     friends = [@
                  
                  [@{
@@ -45,16 +51,47 @@
         @"public_repos": @25,
         @"public_gists": @6,
         @"followers": @39,
-        @"following": @48
+        @"following": @48,
+        @"avatar_url": @"https://avatars.githubusercontent.com/u/1536630?v=3"
         }
        ] mutableCopy];
-    
     
     // Registers a class for use in creating new table cells.
     
     // if we don't have a storyboard, this is the way to use prototype cells that we have created in a class for our tableView
     [self.tableView registerClass:[FriendCell class] forCellReuseIdentifier:@"friendCell"];
  
+    
+    
+    // target: The object that receives the action message
+    UIBarButtonItem * addFriendButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addFriend)];
+    
+    self.navigationItem.rightBarButtonItem = addFriendButton;
+}
+
+-(void)addFriend {
+    
+     // create a new friend
+    NewFriendVC *newFriendVC = [[NewFriendVC alloc] init];
+    
+    // add our array of friends to the property array of our new friends (WHY: WHEN THE NEWFIIENDS CHANGES THE ARRAY WE WANT THE VC TO ACCESS THE SAME DATA NOT AN OLDER ONE (WE WANT BOTH TO COMMUNICATE WITH THE SAME ARRAY), SO WE HAVE TO HAVE MORE REFERENCES (TWO REFERENCES COUNT))
+    
+    // other explanation: transfer our array of friends to the otherVC before transfering
+    newFriendVC.friends = friends;
+    
+    // ^ means block (we don't want anything to be returned at completion so we but nil
+    
+    newFriendVC.view.backgroundColor = [UIColor purpleColor];
+    
+    
+    // Whole other new NVC
+    UINavigationController *nC2 = [[UINavigationController alloc] init];
+    nC2.viewControllers = @[newFriendVC];
+    
+    // from botoom to top, when push without a NC from right to left
+    [self presentViewController:nC2 animated:YES completion:nil];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,24 +104,37 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 1;
+    return friends.count;
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (FriendCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     // Configure the cell...
     FriendCell *cell = [tableView dequeueReusableCellWithIdentifier:@"friendCell" forIndexPath:indexPath];
     
     NSDictionary *friendInfo = friends[indexPath.row];
+    
+    cell.textLabel.text = friendInfo[@"name"];
+    
+    NSURL *avatarURL = [NSURL URLWithString:friendInfo[@"avatar_url"]];
+    
+ 
+    NSData *imageData = [NSData dataWithContentsOfURL:avatarURL];
+    
+    UIImage *image = [UIImage imageWithData:imageData];
+    
+    cell.imageView.image = image;
+    
     return cell;
 }
+
 
 
 /*

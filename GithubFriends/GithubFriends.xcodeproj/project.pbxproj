@@ -14,6 +14,8 @@
 		BD82AD321A5EC9C3005B4D8B /* GithubFriendsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BD82AD311A5EC9C3005B4D8B /* GithubFriendsTests.m */; };
 		BD82AD3D1A5ECB70005B4D8B /* FriendsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BD82AD3C1A5ECB70005B4D8B /* FriendsTVC.m */; };
 		BD82AD401A5ECB9F005B4D8B /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD82AD3F1A5ECB9F005B4D8B /* FriendCell.m */; };
+		BD82AD431A5EE37E005B4D8B /* FriendDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BD82AD421A5EE37E005B4D8B /* FriendDetailVC.m */; };
+		BD82AD461A5EE3A8005B4D8B /* NewFriendVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BD82AD451A5EE3A8005B4D8B /* NewFriendVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +43,10 @@
 		BD82AD3C1A5ECB70005B4D8B /* FriendsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendsTVC.m; path = ../FriendsTVC.m; sourceTree = "<group>"; };
 		BD82AD3E1A5ECB9F005B4D8B /* FriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendCell.h; path = ../FriendCell.h; sourceTree = "<group>"; };
 		BD82AD3F1A5ECB9F005B4D8B /* FriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendCell.m; path = ../FriendCell.m; sourceTree = "<group>"; };
+		BD82AD411A5EE37E005B4D8B /* FriendDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendDetailVC.h; sourceTree = "<group>"; };
+		BD82AD421A5EE37E005B4D8B /* FriendDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendDetailVC.m; sourceTree = "<group>"; };
+		BD82AD441A5EE3A8005B4D8B /* NewFriendVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewFriendVC.h; sourceTree = "<group>"; };
+		BD82AD451A5EE3A8005B4D8B /* NewFriendVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewFriendVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +90,10 @@
 			children = (
 				BD82AD3B1A5ECB70005B4D8B /* FriendsTVC.h */,
 				BD82AD3C1A5ECB70005B4D8B /* FriendsTVC.m */,
+				BD82AD411A5EE37E005B4D8B /* FriendDetailVC.h */,
+				BD82AD421A5EE37E005B4D8B /* FriendDetailVC.m */,
+				BD82AD441A5EE3A8005B4D8B /* NewFriendVC.h */,
+				BD82AD451A5EE3A8005B4D8B /* NewFriendVC.m */,
 				BD82AD3E1A5ECB9F005B4D8B /* FriendCell.h */,
 				BD82AD3F1A5ECB9F005B4D8B /* FriendCell.m */,
 				BD82AD191A5EC9C3005B4D8B /* AppDelegate.h */,
@@ -221,7 +231,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD82AD1B1A5EC9C3005B4D8B /* AppDelegate.m in Sources */,
+				BD82AD431A5EE37E005B4D8B /* FriendDetailVC.m in Sources */,
 				BD82AD3D1A5ECB70005B4D8B /* FriendsTVC.m in Sources */,
+				BD82AD461A5EE3A8005B4D8B /* NewFriendVC.m in Sources */,
 				BD82AD181A5EC9C3005B4D8B /* main.m in Sources */,
 				BD82AD401A5ECB9F005B4D8B /* FriendCell.m in Sources */,
 			);
