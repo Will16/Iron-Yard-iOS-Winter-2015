@@ -229,17 +229,24 @@
     return cell;
 }
 
+// called before laying out the views
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    // if it responds to the method, setSeparatorsInset to be 0, 0
     if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
         [cell setSeparatorInset:UIEdgeInsetsZero];
     }
+    
+    // same thing but not for separators, but insets of the cell (will change the position of the content of the cell)
     
     if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
         [cell setLayoutMargins:UIEdgeInsetsZero];
     }
 }
+
+// same but called after laying out the views
 
 -(void)viewDidLayoutSubviews
 {

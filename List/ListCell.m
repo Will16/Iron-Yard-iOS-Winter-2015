@@ -44,7 +44,7 @@
         // x, y top left
         colorView  = [[UIView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 30, 10, 20, 20)];
         
-        // 10 (20/2)
+
         colorView.layer.cornerRadius = 10;
         
         
