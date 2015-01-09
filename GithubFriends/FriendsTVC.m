@@ -11,6 +11,8 @@
 #import "NewFriendVC.h"
 #import "FriendDetailVC.h"
 #import "AppDelegate.h"
+#import "FriendDetailVC.h"
+
 
 @interface FriendsTVC ()
 
@@ -42,6 +44,7 @@
                  [@{
         
             // @number turns the number into an object (so you can put it in a dictionary)
+        @"login": @"joalbright",
         @"id": @1536630,
         @"name": @"Jo Albritght",
         @"company": @"The Iron Yard",
@@ -56,6 +59,7 @@
         }
        ] mutableCopy];
     
+   
     // Registers a class for use in creating new table cells.
     
     // if we don't have a storyboard, this is the way to use prototype cells that we have created in a class for our tableView
@@ -76,7 +80,7 @@
     
     // add our array of friends to the property array of our new friends (WHY: WHEN THE NEWFIIENDS CHANGES THE ARRAY WE WANT THE VC TO ACCESS THE SAME DATA NOT AN OLDER ONE (WE WANT BOTH TO COMMUNICATE WITH THE SAME ARRAY), SO WE HAVE TO HAVE MORE REFERENCES (TWO REFERENCES COUNT))
     
-    // other explanation: transfer our array of friends to the otherVC before transfering
+    // SAME POINTER FOR BOTH CLASSES SO THE ARRAY GETS UPDATED FOR BOTH CLASSES
     newFriendVC.friends = friends;
     
     // ^ means block (we don't want anything to be returned at completion so we but nil
@@ -110,11 +114,13 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
+    
+  
     return friends.count;
 }
 
 
-- (FriendCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     // Configure the cell...
     FriendCell *cell = [tableView dequeueReusableCellWithIdentifier:@"friendCell" forIndexPath:indexPath];
@@ -123,6 +129,7 @@
     
     cell.textLabel.text = friendInfo[@"name"];
     
+    NSLog(@"%@", cell.textLabel.text);
     NSURL *avatarURL = [NSURL URLWithString:friendInfo[@"avatar_url"]];
     
  
@@ -133,6 +140,26 @@
     cell.imageView.image = image;
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+    // crate a mutable Copy of the ditionary
+
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    FriendDetailVC *detailVC = [[FriendDetailVC alloc] init];
+    
+    detailVC.username = cell.textLabel.text;
+    
+    detailVC.friendInfo = friends[indexPath.row];
+    
+    [self.navigationController pushViewController:detailVC animated:YES];
+    
+    // 1.create another VC corresponding to detailVC (name: detailVC) 2. detailVC.username = cell.label.text 3. storyboard push the vc
+    
+    
 }
 
 
