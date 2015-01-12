@@ -14,7 +14,7 @@
 #import "FriendDetailVC.h"
 
 
-@interface FriendsTVC ()
+@interface FriendsTVC () 
 
 @end
 
@@ -71,6 +71,8 @@
     UIBarButtonItem * addFriendButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addFriend)];
     
     self.navigationItem.rightBarButtonItem = addFriendButton;
+    
+   
 }
 
 -(void)addFriend {
@@ -97,6 +99,8 @@
     
     
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -142,6 +146,8 @@
     return cell;
 }
 
+
+// DELEGATE METHOD: WE CLICK AND THE VIEW LETS THE TABLEVIEW KNOW
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     

@@ -30,11 +30,14 @@
 // and set friendInfo based on cell selected
 
 
-@interface FriendDetailVC ()
+@interface FriendDetailVC () <UITableViewDelegate, UITableViewDataSource>
 
 @end
 
-@implementation FriendDetailVC
+@implementation FriendDetailVC {
+    
+    NSArray *repos;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,8 +45,44 @@
     [self save];
     // Do any additional setup after loading the view.
     
+    self.view.backgroundColor  = [UIColor whiteColor];
+    
+    
   
 }
+
+-(NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return repos.count;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+  
+    
+    
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
+    
+    
+//    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    cell.textLabel.text = repos[indexPath.row][@"name"];
+    
+    
+    // CHECK IN THE DEBUGGER THE ERROR CAN BE NULL AND NOT NIL
+    if (repos[indexPath.row][@"description"] == [NSNull null]) {
+        
+    }
+    
+    else {
+        cell.detailTextLabel.text = repos[indexPath.row][@"description"];
+    }
+    
+    
+  
+    
+    return cell;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -55,6 +94,7 @@
 
     NSString *githubName = self.friendInfo[@"login"];
     // define a String corresponding to url
+    // dynamic because the githubNAme changes according to the dictionary property
      NSString * urlString = [NSString stringWithFormat:@"https://api.github.com/users/%@/repos", githubName];
     
     // convert to url
@@ -67,9 +107,16 @@
     NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     
     // convert the responseData to dictionary
-    NSArray *userInfo = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:nil];
+     repos = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:nil];
     
-    NSLog(@"%@", userInfo);
+    
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 200, 320, 360)];
+    
+    [self.view addSubview:tableView];
+    
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    NSLog(@"%@", repos);
     // return the json data to our userInfo
     // IT TRANSFERS TO FRIENDSTVC BECAUSE BOTH ARE POINTING TO THE SAME OBJECT
 
