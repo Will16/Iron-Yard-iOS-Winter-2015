@@ -163,7 +163,6 @@
     
     if (button.tag == 1000) {
         
-        NSLog(@"clickOnButton");
         player1Wins = 0;
         player2Wins = 0;
         scoreLabel.text = [NSString stringWithFormat:  @"Player1 Wins: %d, Player2 Wins: %d", player1Wins, player2Wins];
