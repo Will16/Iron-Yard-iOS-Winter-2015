@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 // HOMEWORK
 
 // Center squares on View (done)
@@ -19,6 +21,13 @@
 
 @interface ViewController () <UIAlertViewDelegate>
 
+@property (nonatomic) int player1Score;
+@property (nonatomic) int player2Score;
+
+// THIS DOES NOT POINT TO A SPOT IN MEMORY! IF WE DECLARE IT IN IMPLEMENTATION BELOW IT WILL (LOCAL VARIABLE DO), WE HAVE TO SET A PROPERTY FOR IT TO BE ALLOCATED IN MEMORY. IT IS ALLOCATED (THE GETTER AND SETTER IS CREATED) WE DO ALLOC INIT
+@property (nonatomic) UILabel * label2;
+
+
 
 @end
 
@@ -28,6 +37,7 @@
     int player2Wins;
     
     int playerTurn;
+    
     
     NSMutableArray *squares;
     
@@ -45,6 +55,7 @@
     player2Wins = 0;
     // Do any additional setup after loading the view, typically from a nib.
     
+    // TO CREATE 2 LABELS FOR EACH PLAYERS, CREATE 2 SAME SIZE (WIDTH: IS WIDTH_SCREEN - (20)) AND FOR ONE TEXT.ISALIGNEDLEFT AND OTHER TEXT.ISALIGNEDRIGHT
     scoreLabel = [[UILabel alloc] initWithFrame: CGRectMake(10, 10, self.view.frame.size.width, 40)];
     scoreLabel.text = [NSString stringWithFormat:  @"Player1 Wins: %d, Player2 Wins: %d", player1Wins, player2Wins];
     // scoreLabel.text = @"Player1 Wins: %d, Player2 Wins: %d", player1Wins, player2Wins;
@@ -55,7 +66,7 @@
     
     resetLabelButton.backgroundColor = [UIColor redColor];
     [resetLabelButton setTitle:@"resetLabels" forState:UIControlStateNormal];
-    [resetLabelButton addTarget:self action:@selector(resetButton:) forControlEvents:UIControlEventTouchUpInside];
+    [resetLabelButton addTarget:self action:@selector(resetLabel:) forControlEvents:UIControlEventTouchUpInside];
     resetLabelButton.tag = 1000;
     [self.view addSubview: resetLabelButton];
 
@@ -80,6 +91,13 @@
     CGFloat width = 100;
     CGFloat height = 100;
     
+    // works because of alpha (so cool effect)
+    CGFloat padding = -20;
+    
+    // the fullWidth and length of our grid
+    
+    CGFloat fullWidth = (colCount * width) + (colCount - 1) * padding;
+    CGFloat fullHeight = (rowCount * width) + (rowCount - 1) * padding;
     // the middle - half of our grid (150 because one cell is 100 (so 1 1/2 = 100 + 50))
     CGFloat initialX = self.view.frame.size.width/2 - 150;
     CGFloat initialY = self.view.frame.size.height/2 - 150;
@@ -95,15 +113,28 @@
             
             
             // the col number * (width of a spot + the gap)
-            CGFloat x = c * (width + 10) + initialX;
+            //CGFloat x = c * (width + 10) + initialX;
             
             // same thing: the r is constant for this loop
-            CGFloat y = r * (height + 10) + initialY;
+           // CGFloat y = r * (height + 10) + initialY;
             
+            
+            // (the column number * width + padding) + ((width of screen - width of grid)/2)
+            CGFloat x = c * (width + padding) + (SCREEN_WIDTH - fullWidth)/2;
+            
+            // same for row
+            CGFloat y = r * (height + padding) + (SCREEN_HEIGHT - fullHeight)/2;
             // add button appropriate place and with width and height variables
             UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(x, y, width, height)];
             
+            button.alpha = 0.5;
+            
             button.backgroundColor = [UIColor blueColor];
+            
+            button.layer.cornerRadius = height/2;
+            
+            
+            
             
             button.tag = buttonCount;
             
@@ -131,6 +162,12 @@
 }
 
 
+// only used for overriding (if we want something else than _player1Score = player1Score
+-(void)setPlayer1Score:(int)player1Score {
+    _player1Score = player1Score;
+}
+
+
 - (void) squareTapped:(UIButton *)button {
     
     // if already played
@@ -154,12 +191,12 @@
     
     [self checkForWin];
     // button.tag is an NSInteger and %d is for integer, so cast as an integer (less memory too because int is a primitive and NSInteger is an object)
-    
+    [self checkForTie];
     
 }
 
 
-- (void) resetButton:(UIButton *)button {
+- (void) resetLabel:(UIButton *)button {
     
     if (button.tag == 1000) {
         
@@ -171,6 +208,15 @@
   
 }
 
+-(void)checkForTie {
+    if (![squares containsObject:@0]) {
+        NSLog(@"Tie Game");
+        
+        [self resetButtons];
+    }
+    
+    
+}
 -(void) checkForWin {
     
     // an array of arrays
@@ -231,6 +277,8 @@
             player1Wins += 1;
             
             scoreLabel.text = [NSString stringWithFormat:  @"Player1 Wins: %d, Player2 Wins: %d", player1Wins, player2Wins];
+            
+            
         }
         
         else {
@@ -240,10 +288,21 @@
             
         }
         
+        
+        [self resetButtons];
+        
+        
     }
     
 }
 
+-(void)resetButtons {
+    for (UIButton *button  in buttons) {
+        
+        button.backgroundColor = [UIColor blueColor];
+        
+    }
+}
 // if we clicked buttonTitle Play again now
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
