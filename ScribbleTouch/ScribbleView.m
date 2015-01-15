@@ -52,9 +52,22 @@
       return _scribbles;
 }
 
+- (void)drawInRect:(CGRect)rect
+         blendMode:(CGBlendMode)blendMode
+             alpha:(CGFloat)alpha {
+    
+    
+}
+
+// TO USE BLENDMODE YOU NEED TO ADD A VIEW ON TOP OF ANOTHER (OR A DRAWING ON TOP OF ANOTHER AND THEN SET THE BLEND MODE ON THE VIEW ON TOP)
+
 - (void)drawRect:(CGRect)rect {
     
     CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetLineCap(context, kCGLineCapRound);
+    CGContextSetLineJoin(context, kCGLineJoinRound);
+    
     
     // for all the scribble take the stroke of our scribble, the color
     for (NSDictionary *scribble in self.scribbles) {
@@ -62,8 +75,27 @@
     
         CGContextSetLineWidth(context, [scribble[@"strokeWidth"] floatValue]);
         
-        UIColor *strokeColor = scribble[@"strokeColor"];
-               [strokeColor set];
+        NSNumber *alphaObject =  scribble[@"alpha"];
+        
+        //transform NSNumber to Float
+        CGFloat alpha = [alphaObject floatValue];
+        
+        
+        UIColor *strokeColorNoAlpha = scribble[@"strokeColor"];
+        UIColor *strokeColor = [strokeColorNoAlpha colorWithAlphaComponent:alpha];
+        
+        
+        
+        CGContextSetStrokeColorWithColor(context, strokeColor.CGColor);
+        
+        UIColor *fillColorNoAlpha = scribble[@"fillColor"];
+        UIColor *fillColor = [fillColorNoAlpha colorWithAlphaComponent:alpha];
+        
+      
+        
+        
+       CGContextSetFillColorWithColor(context, fillColor.CGColor);
+        
         
         // return the CGPointValue of our first point in our scribble
         CGPoint firstPoint = [scribble[@"points"][0] CGPointValue];
@@ -75,27 +107,91 @@
         for (NSValue *pointValue in scribble[@"points"]) {
             CGPoint point = [pointValue CGPointValue];
             CGContextAddLineToPoint(context, point.x, point.y);
+            
+            
         }
         
         CGContextStrokePath(context);
+        
+        
+        CGContextMoveToPoint(context, firstPoint.x, firstPoint.y);
+      
+        
+        for (NSValue *pointValue in scribble[@"points"]) {
+            CGPoint point = [pointValue CGPointValue];
+            CGContextAddLineToPoint(context, point.x, point.y);
+            
+            
+        }
+        CGContextFillPath(context);
+        
+    
     }
     
  
-    /*
-    [[UIColor colorWithWhite:0.0 alpha:0.5] set];
+    CGContextRef context2 = UIGraphicsGetCurrentContext();
+
     
-    CGContextSetLineWidth(context, 30);
-    CGContextAddEllipseInRect(context, CGRectMake(10, 10, 200, 200));
-    CGContextAddEllipseInRect(context, CGRectMake(10, 100, 200, 200));
+  //  CGContextSetBlendMode (context2, kCGBlendModeMultiply);
+    CGContextSetBlendMode (context2, kCGBlendModeScreen);
     
-    CGContextFillPath(context);
-    
-    
-    CGContextAddEllipseInRect(context, CGRectMake(10, 10, 200, 200));
-    CGContextAddEllipseInRect(context, CGRectMake(10, 100, 200, 200));
-    CGContextStrokePath(context);
-     */
-    // Drawing code
+    // for all the scribble take the stroke of our scribble, the color
+    for (NSDictionary *scribble in self.scribbles) {
+        
+        
+        CGContextSetLineWidth(context2, [scribble[@"strokeWidth"] floatValue]);
+        
+        NSNumber *alphaObject =  scribble[@"alpha"];
+        
+        //transform NSNumber to Float
+        CGFloat alpha = [alphaObject floatValue];
+        
+        
+        UIColor *strokeColorNoAlpha = scribble[@"strokeColor"];
+        UIColor *strokeColor = [strokeColorNoAlpha colorWithAlphaComponent:alpha];
+        
+        
+        
+        CGContextSetStrokeColorWithColor(context2, strokeColor.CGColor);
+        
+        UIColor *fillColorNoAlpha = scribble[@"fillColor"];
+        UIColor *fillColor = [fillColorNoAlpha colorWithAlphaComponent:alpha];
+        
+        
+        
+        
+        CGContextSetFillColorWithColor(context2, fillColor.CGColor);
+        
+        
+        // return the CGPointValue of our first point in our scribble
+        CGPoint firstPoint = [scribble[@"points"][0] CGPointValue];
+        
+        // move context to our firstPoint in location
+        CGContextMoveToPoint(context2, firstPoint.x , firstPoint.y);
+        
+        // for all the points in our scribble, add a line to the next point
+        for (NSValue *pointValue in scribble[@"points"]) {
+            CGPoint point = [pointValue CGPointValue];
+            CGContextAddLineToPoint(context2, point.x, point.y);
+            
+            
+        }
+        
+        CGContextStrokePath(context2);
+        
+        
+        CGContextMoveToPoint(context2, firstPoint.x, firstPoint.y);
+        
+        
+        for (NSValue *pointValue in scribble[@"points"]) {
+            CGPoint point = [pointValue CGPointValue];
+            CGContextAddLineToPoint(context2, point.x, point.y);
+            
+            
+        }
+        CGContextFillPath(context2);
+    }
+
 }
 
 
