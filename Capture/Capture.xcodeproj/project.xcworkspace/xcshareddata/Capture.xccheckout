@@ -5,16 +5,16 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>23E0D78D-D710-462D-9239-2CC9CA6AEB5B</string>
+	<string>54FE30C0-CD6E-41B3-A9BB-3AC074EB62DC</string>
 	<key>IDESourceControlProjectName</key>
-	<string>ScribbleTouch</string>
+	<string>Capture</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>940932BF5E70818F809A38447B80332CE0A7AFA7</key>
 		<string>https://github.com/Will16/ios-apps.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>ScribbleTouch/ScribbleTouch.xcodeproj</string>
+	<string>Capture/Capture.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>940932BF5E70818F809A38447B80332CE0A7AFA7</key>
