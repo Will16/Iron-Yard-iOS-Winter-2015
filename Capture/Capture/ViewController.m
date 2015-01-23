@@ -99,6 +99,8 @@
     
 
 }
+
+// gamescene bottom left is 0, 0
 -(void) changeMediaType {
     self.cameraPickerController.cameraCaptureMode = (self.mediaChoiceButton.selectedSegmentIndex == 0)?
 UIImagePickerControllerCameraCaptureModePhoto:
@@ -124,7 +126,9 @@ UIImagePickerControllerCameraCaptureModePhoto:
             
             [self.takeMediaButton removeTarget:self.cameraPickerController action:@selector(takePicture) forControlEvents:UIControlEventTouchUpInside];
             [self.takeMediaButton addTarget:self.cameraPickerController action:@selector(startVideoCapture) forControlEvents:UIControlEventTouchUpInside];
-            [self.stopVideoRecordingButton addTarget:self.cameraPickerController action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
+            
+            // dismiss on self NOT ON self.cameraPickerController!
+            [self.stopVideoRecordingButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
             
             
       
@@ -135,6 +139,7 @@ UIImagePickerControllerCameraCaptureModePhoto:
     }
     
 }
+
 
 
 -(void)dismiss {

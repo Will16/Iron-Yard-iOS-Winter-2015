@@ -15,6 +15,7 @@
 		BD824B431A6E985D00FB0258 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD824B411A6E985D00FB0258 /* LaunchScreen.xib */; };
 		BD824B4F1A6E985D00FB0258 /* CaptureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BD824B4E1A6E985D00FB0258 /* CaptureTests.m */; };
 		BD824B5A1A6EADA500FB0258 /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD824B591A6EADA500FB0258 /* FilterViewController.m */; };
+		BD824B621A70383B00FB0258 /* SlickSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = BD824B611A70383B00FB0258 /* SlickSlider.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,8 @@
 		BD824B4E1A6E985D00FB0258 /* CaptureTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CaptureTests.m; sourceTree = "<group>"; };
 		BD824B581A6EADA500FB0258 /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
 		BD824B591A6EADA500FB0258 /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
+		BD824B601A70383B00FB0258 /* SlickSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlickSlider.h; sourceTree = "<group>"; };
+		BD824B611A70383B00FB0258 /* SlickSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlickSlider.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +92,8 @@
 				BD824B391A6E985D00FB0258 /* ViewController.h */,
 				BD824B3A1A6E985D00FB0258 /* ViewController.m */,
 				BD824B3C1A6E985D00FB0258 /* Main.storyboard */,
+				BD824B601A70383B00FB0258 /* SlickSlider.h */,
+				BD824B611A70383B00FB0258 /* SlickSlider.m */,
 				BD824B581A6EADA500FB0258 /* FilterViewController.h */,
 				BD824B591A6EADA500FB0258 /* FilterViewController.m */,
 				BD824B3F1A6E985D00FB0258 /* Images.xcassets */,
@@ -225,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD824B621A70383B00FB0258 /* SlickSlider.m in Sources */,
 				BD824B3B1A6E985D00FB0258 /* ViewController.m in Sources */,
 				BD824B381A6E985D00FB0258 /* AppDelegate.m in Sources */,
 				BD824B5A1A6EADA500FB0258 /* FilterViewController.m in Sources */,
