@@ -84,12 +84,7 @@ Homework :
     
     [usersQuery whereKey:@"objectId" notEqualTo:[PFUser currentUser].objectId];
  
-    //    [messageQuery whereKey:@"owner" equalTo:[PFUser currentUser]];
-    
-    
-    //includeKye  Make the query include PFObjects that have a reference stored at the provided key.
-    // all messages that have something written by somebody (that has a owner (something for the key owner (that stores the PFUser of the message))
-    
+
 
     
     [usersQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -217,25 +212,7 @@ Homework :
     }];
 }
 
-/*
- -(void) findFriends {
- 
- PFQuery *friendQuery = [PFQuery queryWithClassName:@"_User"];
- 
- [friendQuery whereKey:@"objectId" equalTo:[PFUser currentUser].objectId];
- 
- [friendQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
- 
- if (objects.count > 0) {
- PFUser *user = [objects lastObject];
- NSMutableArray *friendsOfUser = user[@"friends"];
- friends = friendsOfUser;
- }
- 
- }];
- }
- 
- 
+
  
  
  */
