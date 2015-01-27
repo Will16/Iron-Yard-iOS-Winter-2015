@@ -8,6 +8,11 @@
 
 
 
+// create a login username, then add an array of userfriends (contacts not friends (hardore them), everytime you login new user add contact (harcode it in array), if you click on a row show friends chat (BLACK BOXES (UIVIEWS) IN A CELL, NOT INTERSECTING IN HOMEWORK) 2 different cell types with two different identifiers (FOR BLACK BOX TO LEFT AND blACK BOX TO RED) (GRAP A SECOND PROTOYPE TO BOTTOM), when you click + button (next to friend) it present a new vc and present the new navigation controller with all the friends
+
+// 1. vcs all contacts, 2. add contact as friends or delete the friend, 3. bubble chat image view (you and friend)
+// cell for row for 2 prototypes
+
 #import "ViewController.h"
 
 

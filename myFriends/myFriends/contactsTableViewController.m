@@ -146,8 +146,12 @@ Homework :
 }
 
 -(void) addFriendToOurFriendsArray:(PFUser*) friend {
-    PFQuery *friendQuery = [PFQuery queryWithClassName:@"_User"];
     
+    PFQuery *friendQuery = [PFUser query];
+    
+    
+    
+    [friendQuery includeKey:@"friends"];
     [friendQuery whereKey:@"objectId" equalTo:[PFUser currentUser].objectId];
     
     [friendQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -171,8 +175,14 @@ Homework :
             }
             else {
                 
+                NSLog(@"%@",friend);
+                NSLog(@"%@",friendsOfUser);
                 
+                
+            //   if (![friendsOfUser containsObject:friend])
                 for (PFUser *friendUser in friendsOfUser) {
+                    
+                    // array
                     if ([friendUser.objectId isEqual:friend.objectId]) {
                   
                         return;
@@ -215,7 +225,7 @@ Homework :
 
  
  
- */
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
