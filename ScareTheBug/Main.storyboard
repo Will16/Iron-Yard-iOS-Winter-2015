@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="ScareTheBug" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-page.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="HVQ-nj-b8d">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bedbug.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="bxt-yJ-r9c">
+                                <rect key="frame" x="280" y="280" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="3I3-2S-xU9"/>
+                                    <constraint firstAttribute="width" constant="20" id="5UK-Ss-aaw"/>
+                                    <constraint firstAttribute="height" constant="50" id="Bfv-nZ-Lut"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="40" id="Cjd-Cv-Xyj"/>
+                                    <constraint firstAttribute="width" constant="50" id="IN5-of-fe7"/>
+                                    <constraint firstAttribute="height" constant="40" id="JxA-SR-Fu3"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="Odk-Vi-RG7"/>
+                                    <constraint firstAttribute="height" constant="20" id="aol-We-ETQ"/>
+                                    <constraint firstAttribute="height" constant="50" id="bVw-Km-q1z"/>
+                                    <constraint firstAttribute="width" constant="40" id="faP-tU-9hK"/>
+                                    <constraint firstAttribute="height" constant="20" id="p3b-VT-9xS"/>
+                                    <constraint firstAttribute="width" constant="30" id="y6T-A4-PoK"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="5UK-Ss-aaw"/>
+                                        <exclude reference="Bfv-nZ-Lut"/>
+                                        <exclude reference="IN5-of-fe7"/>
+                                        <exclude reference="Odk-Vi-RG7"/>
+                                        <exclude reference="aol-We-ETQ"/>
+                                        <exclude reference="bVw-Km-q1z"/>
+                                        <exclude reference="p3b-VT-9xS"/>
+                                        <exclude reference="y6T-A4-PoK"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HVQ-nj-b8d" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="6vY-5D-o61"/>
+                            <constraint firstAttribute="centerX" secondItem="bxt-yJ-r9c" secondAttribute="centerX" id="TT2-Xb-7LH"/>
+                            <constraint firstAttribute="centerY" secondItem="bxt-yJ-r9c" secondAttribute="centerY" id="dWZ-9G-wrY"/>
+                            <constraint firstItem="HVQ-nj-b8d" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-20" id="f6o-5p-I99"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HVQ-nj-b8d" secondAttribute="trailing" constant="-16" id="fNJ-fY-8De"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="HVQ-nj-b8d" secondAttribute="bottom" id="gub-fj-Ryb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bedBugImageView" destination="bxt-yJ-r9c" id="V3Q-0F-4ww"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bedbug.jpg" width="640" height="813"/>
+        <image name="bg-page.jpg" width="1993" height="1350"/>
+    </resources>
+</document>
