@@ -10,31 +10,31 @@
 	<string>firstHomework</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>DD00DCA23034E82F9109B3B87A1D919353628F83</key>
-		<string>https://github.com/Will16/firstHomework.git</string>
+		<key>940932BF5E70818F809A38447B80332CE0A7AFA7</key>
+		<string>https://github.com/Will16/ios-apps.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>firstHomework.xcodeproj</string>
+	<string>firstHomework/firstHomework.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>DD00DCA23034E82F9109B3B87A1D919353628F83</key>
-		<string>../..</string>
+		<key>940932BF5E70818F809A38447B80332CE0A7AFA7</key>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/Will16/firstHomework.git</string>
+	<string>https://github.com/Will16/ios-apps.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>DD00DCA23034E82F9109B3B87A1D919353628F83</string>
+	<string>940932BF5E70818F809A38447B80332CE0A7AFA7</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>DD00DCA23034E82F9109B3B87A1D919353628F83</string>
+			<string>940932BF5E70818F809A38447B80332CE0A7AFA7</string>
 			<key>IDESourceControlWCCName</key>
-			<string>firstHomework</string>
+			<string>ios-apps</string>
 		</dict>
 	</array>
 </dict>
