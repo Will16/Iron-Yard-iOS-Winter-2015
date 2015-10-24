@@ -50,7 +50,7 @@ class APIRequest {
                 
                 var jsonError : NSError?
                 
-                var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as [[String: String]]
+                var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! [[String: String]]
                 println(jsonResult)
                 
                 // Since NSError does not conform to BooleanType protocol, must explictly compare against nil as of Xcode 6 Beta 5
@@ -61,7 +61,7 @@ class APIRequest {
                 }
                 
                 
-                if let apiDelegate = self.delegate? {
+                if let apiDelegate = self.delegate {
                     
                     dispatch_async(dispatch_get_main_queue()) {
                         

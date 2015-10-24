@@ -22,7 +22,7 @@ class TableViewController: UITableViewController, APIRequestProtocol {
 
         
  
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
        
         
         apiRequest.fetchDataFromUrl()
@@ -64,15 +64,16 @@ class TableViewController: UITableViewController, APIRequestProtocol {
        
   
         var cell = tableView.dequeueReusableCellWithIdentifier("cell") as? UITableViewCell
-
-
         
+        
+        
+      
         
         var bookDict = self.arrayOfBooksDict[indexPath.row] as [String: String]
         
        
         
-        if let author =  bookDict["author"] as String? {
+        if let author =  bookDict["author"]  {
             
             
             cell = UITableViewCell(style: UITableViewCellStyle.Subtitle,
@@ -81,13 +82,18 @@ class TableViewController: UITableViewController, APIRequestProtocol {
             
         }
   
+        
+        else {
+            cell = UITableViewCell(style: UITableViewCellStyle.Default,
+                reuseIdentifier: "cell")
+        }
    
         
-        if let title =  bookDict["title"] as String? {
+        if let title =  bookDict["title"] {
             cell!.textLabel!.text = title
         }
         
-        if let urlString = bookDict["imageURL"] as String? {
+        if let urlString = bookDict["imageURL"]  {
             let url = NSURL(string: urlString)
             let data = NSData(contentsOfURL: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check
             
