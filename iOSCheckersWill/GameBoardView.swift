@@ -52,18 +52,18 @@ var boardPieces: [[GamePiece?]] = Array(count: 8, repeatedValue: Array(count: 8,
     // nib is the frame of the VC (the entity that is holding the view and everything)
     override func layoutSubviews() {
         
-        for (rowIndex, rowArray) in enumerate(boardSquares) {
+        for (rowIndex, rowArray) in boardSquares.enumerate() {
             
             
-            for (columnIndex, squarePieceType) in enumerate(rowArray) {
+            for (columnIndex, squarePieceType) in rowArray.enumerate() {
                 
-                println(squarePieceType)
+                print(squarePieceType)
                 
                 if squarePieceType == 0 { continue }
                 
                 if let type = PieceType(rawValue: squarePieceType) {
                     
-                    var piece = GamePiece(type: type)
+                    let piece = GamePiece(type: type)
                     
                     
                     boardPieces[rowIndex][columnIndex] = piece
@@ -98,7 +98,7 @@ var boardPieces: [[GamePiece?]] = Array(count: 8, repeatedValue: Array(count: 8,
     override func drawRect(rect: CGRect) {
         //
         
-        var context = UIGraphicsGetCurrentContext()
+        let context = UIGraphicsGetCurrentContext()
         
         for c in 0..<gridSize {
             

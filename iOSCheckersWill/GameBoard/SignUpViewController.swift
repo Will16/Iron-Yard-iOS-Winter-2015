@@ -23,7 +23,7 @@ class SignUpViewController: UIViewController, SignedInProtocol {
         
         if let token = User.currentUser().token {
             
-            println(User.currentUser().token)
+            print(User.currentUser().token)
             goToApp()
             
             
@@ -55,7 +55,7 @@ class SignUpViewController: UIViewController, SignedInProtocol {
         
         
         if message.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) != 0 {
-            var alert:UIAlertView = UIAlertView(title: "Message", message: message, delegate: nil, cancelButtonTitle: "Ok")
+            let alert:UIAlertView = UIAlertView(title: "Message", message: message, delegate: nil, cancelButtonTitle: "Ok")
             
             alert.show()
         }
@@ -79,7 +79,7 @@ class SignUpViewController: UIViewController, SignedInProtocol {
     }
     
     func signInUnsuccesful(error: String) {
-        var alert:UIAlertView = UIAlertView(title: "SignIn Unsuccesful", message: error, delegate: nil, cancelButtonTitle: "Ok")
+        let alert:UIAlertView = UIAlertView(title: "SignIn Unsuccesful", message: error, delegate: nil, cancelButtonTitle: "Ok")
         
         alert.show()
     }

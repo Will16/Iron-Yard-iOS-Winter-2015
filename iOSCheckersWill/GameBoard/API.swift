@@ -50,14 +50,14 @@ class APIRequest {
         
         // wrapping it in a parenthesis otherwise the + sign doesn't see the as String
         // the url + users
-        var url = NSURL(string: API_URL + (options["endpoint"] as String))
+        var url = NSURL(string: API_URL + (options["endpoint"] as! String))
         var request = NSMutableURLRequest(URL: url!)
         
         // method is post
         request.HTTPMethod = options["method"] as String
         
         
-        let bodyInfo = options["body"] as [String: AnyObject]
+        let bodyInfo = options["body"] as! [String: AnyObject]
         
         let requestData = NSJSONSerialization.dataWithJSONObject(bodyInfo, options: NSJSONWritingOptions.allZeros, error: nil)
         
@@ -166,18 +166,18 @@ class User {
         APIRequest.requestWithOptions(options, andCompletion: { (responseInfo, error) -> () in
             
             
-            println(responseInfo)
+            print(responseInfo)
             
             if error != nil {
                 
-                println("Error != nil")
+                print("Error != nil")
                 self.delegate?.signInUnsuccesful(error!)
             }
                 
             else {
                 
                 
-                println(responseInfo!)
+                print(responseInfo!)
                 if let dataInfo: AnyObject = responseInfo!["user"] {
                     if let token = dataInfo["authentification_token"] as? String {
                         self.token = token
@@ -196,7 +196,7 @@ class User {
                     
                 else {
                     
-                    println("No data Info")
+                    print("No data Info")
                     self.delegate?.signInUnsuccesful(responseInfo!.description)
                 }
             }
@@ -232,7 +232,7 @@ class User {
             else {
                 
                 
-                println(responseInfo!)
+                print(responseInfo!)
                 if let dataInfo: AnyObject = responseInfo!["user"] {
                     if let token = dataInfo["authentification_token"] as? String {
                         self.token = token
@@ -251,7 +251,7 @@ class User {
                     
                 else {
                     
-                    println("No data Info")
+                    print("No data Info")
                     self.delegate?.signInUnsuccesful(responseInfo!.description)
                 }
             }
